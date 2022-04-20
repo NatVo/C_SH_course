@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\natvo\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\natvo\\.nuget\\packages"
+    ]
+  }
+}

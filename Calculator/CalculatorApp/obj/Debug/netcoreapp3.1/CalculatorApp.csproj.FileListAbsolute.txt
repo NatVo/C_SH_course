@@ -1,0 +1,14 @@
+C:\Users\natvo\Desktop\TL_course\Calculator\CalculatorApp\bin\Debug\netcoreapp3.1\CalculatorApp.exe
+C:\Users\natvo\Desktop\TL_course\Calculator\CalculatorApp\bin\Debug\netcoreapp3.1\CalculatorApp.deps.json
+C:\Users\natvo\Desktop\TL_course\Calculator\CalculatorApp\bin\Debug\netcoreapp3.1\CalculatorApp.runtimeconfig.json
+C:\Users\natvo\Desktop\TL_course\Calculator\CalculatorApp\bin\Debug\netcoreapp3.1\CalculatorApp.runtimeconfig.dev.json
+C:\Users\natvo\Desktop\TL_course\Calculator\CalculatorApp\bin\Debug\netcoreapp3.1\CalculatorApp.dll
+C:\Users\natvo\Desktop\TL_course\Calculator\CalculatorApp\bin\Debug\netcoreapp3.1\CalculatorApp.pdb
+C:\Users\natvo\Desktop\TL_course\Calculator\CalculatorApp\obj\Debug\netcoreapp3.1\CalculatorApp.csproj.AssemblyReference.cache
+C:\Users\natvo\Desktop\TL_course\Calculator\CalculatorApp\obj\Debug\netcoreapp3.1\CalculatorApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\natvo\Desktop\TL_course\Calculator\CalculatorApp\obj\Debug\netcoreapp3.1\CalculatorApp.AssemblyInfoInputs.cache
+C:\Users\natvo\Desktop\TL_course\Calculator\CalculatorApp\obj\Debug\netcoreapp3.1\CalculatorApp.AssemblyInfo.cs
+C:\Users\natvo\Desktop\TL_course\Calculator\CalculatorApp\obj\Debug\netcoreapp3.1\CalculatorApp.csproj.CoreCompileInputs.cache
+C:\Users\natvo\Desktop\TL_course\Calculator\CalculatorApp\obj\Debug\netcoreapp3.1\CalculatorApp.dll
+C:\Users\natvo\Desktop\TL_course\Calculator\CalculatorApp\obj\Debug\netcoreapp3.1\CalculatorApp.pdb
+C:\Users\natvo\Desktop\TL_course\Calculator\CalculatorApp\obj\Debug\netcoreapp3.1\CalculatorApp.genruntimeconfig.cache
