@@ -1,51 +1,8 @@
 ﻿using System;
+using CalculatorLibrary;
 
 namespace CalculatorApp
 {
-    class Calculator
-    {
-        public static double DoOperation(double num1, double num2, string op)
-        {
-            double result = double.NaN; // Default value is "not-a-number" which we use if an operation, such as division, could result in an error.
-
-            // Use a switch statement to do the math.
-            switch (op)
-            {
-                case "с":
-                    result = num1 + num2;
-                    break;
-                case "р":
-                    result = num1 - num2;
-                    break;
-                case "п":
-                    result = num1 * num2;
-                    break;
-                case "д":
-                    // Ask the user to enter a non-zero divisor.
-                    if (num2 != 0)
-                    {
-                        result = num1 / num2;
-                    }
-                    else
-                    {
-                        Console.WriteLine("На ноль делить нельзя!");
-                        result = double.PositiveInfinity;
-                    }
-
-                    break;
-                // Return text for an incorrect option entry.
-                default:
-                    {
-                        Console.WriteLine("Введен некорректный вариант операции калькулятора!");
-                        result = double.PositiveInfinity;
-                        break;
-                    }
-
-            }
-            return result;
-        }
-    }
-
     class Program
     {
         static void Main(string[] args)
@@ -53,8 +10,10 @@ namespace CalculatorApp
             // Display title as the C# console calculator app.
             Console.WriteLine("Консольный калькулятор C#\r");
             Console.WriteLine("------------------------------------------\n");
-
             Console.WriteLine("Нажмите Esc для выхода, любую клавишу - для продолжения работы\n");
+
+            Calculator calculator = new Calculator();
+
             while (Console.ReadKey().Key != ConsoleKey.Escape)
             {
                 // Declare variables and set to empty.
@@ -96,12 +55,13 @@ namespace CalculatorApp
 
                 try
                 {
-                    result = Calculator.DoOperation(cleanNum1, cleanNum2, op);
+                    result = calculator.DoOperation(cleanNum1, cleanNum2, op);
+                    //result = Calculator.DoOperation(cleanNum1, cleanNum2, op);
                     if (double.IsNaN(result))
                     {
                         Console.WriteLine("При попытке произвести вычисления произошла ошибка.\n");
                     }
-                    else if (!double.IsPositiveInfinity(result))
+                    else
                     {
                         Console.WriteLine("Результат: {0:0.##}\n", result);
                     }
@@ -117,6 +77,8 @@ namespace CalculatorApp
                 // Wait for the user to respond before closing.
                 Console.WriteLine("Нажмите Esc для выхода, любую клавишу - для продолжения работы\n");
             }
+
+            calculator.Finish();
             return;
         }
     }

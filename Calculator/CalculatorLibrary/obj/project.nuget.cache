@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WjbdSqDYhPwmm14mzj/wuppD6Q3zmDkrVOKJMAanQd0qdDq2vhbGg42Osvrs+b84ufqTDQ4PyLXgC78lncxSbg==",
+  "dgSpecHash": "Z29YBAwFr+94t3nKum1LUJ61vDRbfKPbLP6eVHes0f5TrryoEeSkeJYDPYfIb4v3K5o8BYB3d7wWP/yqT6urGA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\natvo\\Desktop\\TL_course\\Calculator\\CalculatorApp\\CalculatorApp.csproj",
+  "projectFilePath": "C:\\Users\\natvo\\Desktop\\TL_course\\Calculator\\CalculatorLibrary\\CalculatorLibrary.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\natvo\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\natvo\\.nuget\\packages\\nuget.common\\6.1.0\\nuget.common.6.1.0.nupkg.sha512",
