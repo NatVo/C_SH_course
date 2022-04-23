@@ -17,14 +17,16 @@ namespace StoreLib
             if (setPrice > 0)
                 Price = setPrice; 
         }
+
         public void IncreasePrice(double incrPrice)
         {
             if (incrPrice < 0)
-                throw new ArgumentException("Добавочная стоимость не может быть отрицательной!\n");           
+                Console.WriteLine("Добавочная стоимость не может быть отрицательной!\n");           
             else
                 Price += incrPrice;
 
         }
+
         public void DecreasePrice(double decrPrice)
         {
             if (decrPrice < 0)
@@ -33,8 +35,8 @@ namespace StoreLib
             }
             else
             {
-                if ((Price - decrPrice) <= 0)
-                    throw new ArgumentException("Стоимость товара не может быть отрицательной!");
+                if ((Price - decrPrice) < 0)
+                    Console.WriteLine("Стоимость товара не может быть отрицательной!");
                 else
                     Price -= decrPrice;
 
@@ -47,14 +49,16 @@ namespace StoreLib
             if (setAmount > 0)
                 Amount = setAmount;
         }
+
         public void IncreaseAmount(int incrAmount)
         {
             if (incrAmount < 0)
-                throw new ArgumentException("Величина для увеличения количества товара не может быть отрицательной!\n");
+                Console.WriteLine("Величина для увеличения количества товара не может быть отрицательной!\n");
             else
                 Amount += incrAmount;
 
         }
+
         public void DecreaseAmount(int decrAmount)
         {
             if (decrAmount < 0)
@@ -64,12 +68,11 @@ namespace StoreLib
             else
             {
                 if ((Amount - decrAmount) <= 0)
-                    throw new ArgumentException("Количество товара не может быть отрицательным!");
+                    Console.WriteLine("Количество товара не может быть отрицательным!");
                 else
                     Amount -= decrAmount;
 
             }
-
         }
 
     }

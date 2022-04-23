@@ -8,6 +8,7 @@ namespace StoreLib
         public string Adress { get; set; }
         protected int EmployeesNumber = 1;
         public int AmountOfEmployees { get { return EmployeesNumber; } }
+
         public void AddEmpolyees(int employee)
         {
             if (employee < 1)
@@ -16,6 +17,7 @@ namespace StoreLib
                 EmployeesNumber += employee;
 
         }
+
         public void RemoveEmpolyees(int employee)
         {
             if (employee < 1)
@@ -32,6 +34,7 @@ namespace StoreLib
             }
 
         }
+
         public abstract void OutputStoreInfo();
         public abstract void DeleteItem(string itemName);
         public abstract void ItemsOutput();
