@@ -6,72 +6,104 @@ namespace StoreLib
 {
     public abstract class BaseItem
     {
+        public const string increaseByNegativePriceMessage = "Добавочная стоимость не может быть отрицательной!\n";
+        public const string decreaseByNegativePriceMessage = "Уменьшающая стоимость не может быть отрицательной!\n";
+        public const string negativeTotalPriceMessage = "Стоимость товара не может быть отрицательной!";
+
+        public const string increaseByNegativeAmountMessage = "Величина для увеличения количества товара не может быть отрицательной!\n";
+        public const string decreaseByNegativeAmountMessage = "Величина для уменьшения количества товара не может быть отрицательной!\n";
+        public const string negativeTotalAmountMessage = "Количество товара не может быть отрицательным!";
+
+        private double _price = 0;
+        private int _amount = 0;
+
         public string ItemName { get; set; }
-        protected double Price = 0;
-        protected int Amount = 0;
-        public double GetPrice { get { return Price; } }
-        public int GetAmount { get { return Amount; } }
+        public double GetPrice { get { return _price; } }
+        public int GetAmount { get { return _amount; } }
 
         public void SetPrice(double setPrice) 
         { 
             if (setPrice > 0)
-                Price = setPrice; 
-        }
-
-        public void IncreasePrice(double incrPrice)
-        {
-            if (incrPrice < 0)
-                Console.WriteLine("Добавочная стоимость не может быть отрицательной!\n");           
-            else
-                Price += incrPrice;
-
-        }
-
-        public void DecreasePrice(double decrPrice)
-        {
-            if (decrPrice < 0)
             {
-                Console.WriteLine("Уменьшающая стоимость не может быть отрицательной!\n");
+                _price = setPrice;
+            }   
+            else
+            {
+                throw new ArgumentException(negativeTotalPriceMessage);
+            }
+        }
+
+        public void IncreasePrice(double increasePrice)
+        {
+            if (increasePrice < 0)
+            {
+                throw new ArgumentException(increaseByNegativePriceMessage);
+            }                          
+            else
+            {
+                _price += increasePrice;
+            }                
+        }
+
+        public void DecreasePrice(double decreasePrice)
+        {
+            if (decreasePrice < 0)
+            {
+                throw new ArgumentException(decreaseByNegativePriceMessage);
             }
             else
             {
-                if ((Price - decrPrice) < 0)
-                    Console.WriteLine("Стоимость товара не может быть отрицательной!");
+                if ((_price - decreasePrice) < 0)
+                {
+                    throw new ArgumentException(negativeTotalPriceMessage);
+                }                    
                 else
-                    Price -= decrPrice;
-
+                {
+                    _price -= decreasePrice;
+                }                    
             }
-
         }
 
         public void SetAmount(int setAmount)
         {
             if (setAmount > 0)
-                Amount = setAmount;
+            {
+                _amount = setAmount;
+            }                
+            else
+            {
+                throw new ArgumentException(negativeTotalAmountMessage);
+            }
         }
 
         public void IncreaseAmount(int incrAmount)
         {
             if (incrAmount < 0)
-                Console.WriteLine("Величина для увеличения количества товара не может быть отрицательной!\n");
+            {
+                throw new ArgumentException(increaseByNegativeAmountMessage);
+            }                
             else
-                Amount += incrAmount;
-
+            {
+                _amount += incrAmount;
+            }
         }
 
         public void DecreaseAmount(int decrAmount)
         {
             if (decrAmount < 0)
             {
-                Console.WriteLine("Величина для уменьшения количества товара не может быть отрицательной!\n");
+                throw new ArgumentException(decreaseByNegativeAmountMessage);
             }
             else
             {
-                if ((Amount - decrAmount) <= 0)
-                    Console.WriteLine("Количество товара не может быть отрицательным!");
+                if ((_amount - decrAmount) <= 0)
+                {
+                    throw new ArgumentException(negativeTotalAmountMessage);
+                }                    
                 else
-                    Amount -= decrAmount;
-
+                {
+                    _amount -= decrAmount;
+                }
             }
         }
 

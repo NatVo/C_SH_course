@@ -4,35 +4,57 @@ namespace StoreLib
 {
     public abstract class BaseStore
     {
+        public const string addZeroOrNegativeEmployeesMessage = "Количество принимаемых в магазин работников не может быть нулевым или отрицательным!\n";
+        public const string removeZeroOrNegativeEmployeesMessage = "Количество увольняемых из магазина работников не может быть нулевым или отрицательным!\n";
+        public const string zeroOrNegativeTotalAmountOfEmployeesMessage = "Общее количество работников магазина не может быть нулевым или отрицательным!\n";
+
+        protected int employeesNumber = 1;
+
         public string Name { get; set; }
-        public string Adress { get; set; }
-        protected int EmployeesNumber = 1;
-        public int AmountOfEmployees { get { return EmployeesNumber; } }
+        public string Adress { get; set; }        
+        public int AmountOfEmployees { get { return employeesNumber; } }
+
+        public void SetEmployees(int setEmployeeNum)
+        {
+            if (setEmployeeNum >= 1)
+            {
+                employeesNumber = setEmployeeNum;
+            }
+            else
+            {
+                throw new ArgumentException(zeroOrNegativeTotalAmountOfEmployeesMessage);
+            }
+        }
 
         public void AddEmpolyees(int employee)
         {
             if (employee < 1)
-                Console.WriteLine("Количество принимаемых в магазин работников не может быть нулевым или отрицательным!\n");
+            {
+                throw new ArgumentException(addZeroOrNegativeEmployeesMessage);
+            }                
             else
-                EmployeesNumber += employee;
-
+            {
+                employeesNumber += employee;
+            }
         }
 
         public void RemoveEmpolyees(int employee)
         {
             if (employee < 1)
             {
-                Console.WriteLine("Количество увольняемых из магазина работников не может быть нулевым или отрицательным!\n");
+                throw new ArgumentException(removeZeroOrNegativeEmployeesMessage);
             }
             else
             {
-                if ((EmployeesNumber - employee) < 1)
-                    Console.WriteLine("Общее количество работников магазина не может быть нулевым или отрицательным!\n");
+                if ((employeesNumber - employee) < 1)
+                {
+                    throw new ArgumentException(zeroOrNegativeTotalAmountOfEmployeesMessage);
+                }                    
                 else
-                    EmployeesNumber -= employee;
-
+                {
+                    employeesNumber -= employee;
+                }
             }
-
         }
 
         public abstract void OutputStoreInfo();
