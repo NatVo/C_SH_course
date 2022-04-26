@@ -42,7 +42,7 @@ namespace StoreLib
         }
 
         public override void ItemsOutput()
-        {            
+        {
             int counter = 1;
 
             Console.WriteLine();

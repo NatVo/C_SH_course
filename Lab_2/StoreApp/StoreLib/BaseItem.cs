@@ -21,12 +21,12 @@ namespace StoreLib
         public double GetPrice { get { return _price; } }
         public int GetAmount { get { return _amount; } }
 
-        public void SetPrice(double setPrice) 
-        { 
+        public void SetPrice(double setPrice)
+        {
             if (setPrice > 0)
             {
                 _price = setPrice;
-            }   
+            }
             else
             {
                 throw new ArgumentException(negativeTotalPriceMessage);
@@ -38,11 +38,11 @@ namespace StoreLib
             if (increasePrice < 0)
             {
                 throw new ArgumentException(increaseByNegativePriceMessage);
-            }                          
+            }
             else
             {
                 _price += increasePrice;
-            }                
+            }
         }
 
         public void DecreasePrice(double decreasePrice)
@@ -56,11 +56,11 @@ namespace StoreLib
                 if ((_price - decreasePrice) < 0)
                 {
                     throw new ArgumentException(negativeTotalPriceMessage);
-                }                    
+                }
                 else
                 {
                     _price -= decreasePrice;
-                }                    
+                }
             }
         }
 
@@ -69,7 +69,7 @@ namespace StoreLib
             if (setAmount > 0)
             {
                 _amount = setAmount;
-            }                
+            }
             else
             {
                 throw new ArgumentException(negativeTotalAmountMessage);
@@ -81,7 +81,7 @@ namespace StoreLib
             if (incrAmount < 0)
             {
                 throw new ArgumentException(increaseByNegativeAmountMessage);
-            }                
+            }
             else
             {
                 _amount += incrAmount;
@@ -99,7 +99,7 @@ namespace StoreLib
                 if ((_amount - decrAmount) <= 0)
                 {
                     throw new ArgumentException(negativeTotalAmountMessage);
-                }                    
+                }
                 else
                 {
                     _amount -= decrAmount;
