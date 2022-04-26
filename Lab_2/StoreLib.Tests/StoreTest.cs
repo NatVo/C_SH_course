@@ -1,4 +1,4 @@
-using Xunit;
+п»їusing Xunit;
 
 namespace StoreLib.Tests
 {
@@ -8,8 +8,8 @@ namespace StoreLib.Tests
         public void BookStore_AddEmpolyees_AddZeroOrNegativeAmountOfEmployees_ShouldThrowArgumentException()
         {
             BookStore bookStore = new BookStore();
-            bookStore.Name = "Дом киниги";
-            bookStore.Adress = "ул. Советская, 33";
+            bookStore.Name = "Р”РѕРј РєРёРЅРёРіРё";
+            bookStore.Adress = "СѓР». РЎРѕРІРµС‚СЃРєР°СЏ, 33";
             bookStore.SetEmployees(1);
 
             int employeeAmount = 0; //employeeAmount = -3;
@@ -24,15 +24,15 @@ namespace StoreLib.Tests
                 return;
             }
 
-            Assert.True(false, "Ожидаемая ошибка не была выявлена");
+            Assert.True(false, "РћР¶РёРґР°РµРјР°СЏ РѕС€РёР±РєР° РЅРµ Р±С‹Р»Р° РІС‹СЏРІР»РµРЅР°");
         }
 
         [Fact]
         public void BookStore_RemoveEmpolyees_RemoveZeroOrNegativeAmountOfEmployees_ShouldThrowArgumentException()
         {
             BookStore bookStore = new BookStore();
-            bookStore.Name = "Дом киниги";
-            bookStore.Adress = "ул. Советская, 33";
+            bookStore.Name = "Р”РѕРј РєРёРЅРёРіРё";
+            bookStore.Adress = "СѓР». РЎРѕРІРµС‚СЃРєР°СЏ, 33";
             bookStore.SetEmployees(1);
 
             int employeeAmount = 0; //employeeAmount = -3;
@@ -47,15 +47,15 @@ namespace StoreLib.Tests
                 return;
             }
 
-            Assert.True(false, "Ожидаемая ошибка не была выявлена");
+            Assert.True(false, "РћР¶РёРґР°РµРјР°СЏ РѕС€РёР±РєР° РЅРµ Р±С‹Р»Р° РІС‹СЏРІР»РµРЅР°");
         }
 
         [Fact]
         public void BookStore_RemoveEmpolyees_ZeroOrNegativeTotalAmountOfEmployeesAfterRemoval_ShouldThrowArgumentException()
         {
             BookStore bookStore = new BookStore();
-            bookStore.Name = "Дом киниги";
-            bookStore.Adress = "ул. Советская, 33";
+            bookStore.Name = "Р”РѕРј РєРёРЅРёРіРё";
+            bookStore.Adress = "СѓР». РЎРѕРІРµС‚СЃРєР°СЏ, 33";
             bookStore.SetEmployees(1);
 
             int employeeAmount = 1;
@@ -70,21 +70,21 @@ namespace StoreLib.Tests
                 return;
             }
 
-            Assert.True(false, "Ожидаемая ошибка не была выявлена");
+            Assert.True(false, "РћР¶РёРґР°РµРјР°СЏ РѕС€РёР±РєР° РЅРµ Р±С‹Р»Р° РІС‹СЏРІР»РµРЅР°");
         }
 
         [Fact]
         public void BookStore_DeleteItem_TryToDeleteInexistingBookItem_ShouldThrowArgumentException()
         {
             BookStore bookStore = new BookStore();
-            bookStore.Name = "Дом киниги";
-            bookStore.Adress = "ул. Советская, 33";
+            bookStore.Name = "Р”РѕРј РєРёРЅРёРіРё";
+            bookStore.Adress = "СѓР». РЎРѕРІРµС‚СЃРєР°СЏ, 33";
             bookStore.SetEmployees(10);
 
             BookItem bookOne = new BookItem();
-            bookOne.ItemName = "Шерлок Холмс";
-            bookOne.Author = "Артур Конан-Дойль";
-            bookOne.Genre = "детектив";
+            bookOne.ItemName = "РЁРµСЂР»РѕРє РҐРѕР»РјСЃ";
+            bookOne.Author = "РђСЂС‚СѓСЂ РљРѕРЅР°РЅ-Р”РѕР№Р»СЊ";
+            bookOne.Genre = "РґРµС‚РµРєС‚РёРІ";
             bookOne.SetPrice(153.5);
             bookOne.SetAmount(3);
 
@@ -92,7 +92,7 @@ namespace StoreLib.Tests
 
             try
             {
-                bookStore.DeleteItem("Преступлени и Наказание"); ;
+                bookStore.DeleteItem("РџСЂРµСЃС‚СѓРїР»РµРЅРё Рё РќР°РєР°Р·Р°РЅРёРµ"); ;
             }
             catch (System.ArgumentException e)
             {
@@ -100,7 +100,7 @@ namespace StoreLib.Tests
                 return;
             }
 
-            Assert.True(false, "Ожидаемая ошибка не была выявлена");
+            Assert.True(false, "РћР¶РёРґР°РµРјР°СЏ РѕС€РёР±РєР° РЅРµ Р±С‹Р»Р° РІС‹СЏРІР»РµРЅР°");
         }
     }
 
@@ -110,9 +110,9 @@ namespace StoreLib.Tests
         public void BookItem_IncreasePrice_IncreaseByNegativePrice_ShouldThrowArgumentException()
         {
             BookItem bookOne = new BookItem();
-            bookOne.ItemName = "Шерлок Холмс";
-            bookOne.Author = "Артур Конан-Дойль";
-            bookOne.Genre = "детектив";
+            bookOne.ItemName = "РЁРµСЂР»РѕРє РҐРѕР»РјСЃ";
+            bookOne.Author = "РђСЂС‚СѓСЂ РљРѕРЅР°РЅ-Р”РѕР№Р»СЊ";
+            bookOne.Genre = "РґРµС‚РµРєС‚РёРІ";
 
             double increasePrice = -5;
 
@@ -126,16 +126,16 @@ namespace StoreLib.Tests
                 return;
             }
 
-            Assert.True(false, "Ожидаемая ошибка не была выявлена");
+            Assert.True(false, "РћР¶РёРґР°РµРјР°СЏ РѕС€РёР±РєР° РЅРµ Р±С‹Р»Р° РІС‹СЏРІР»РµРЅР°");
         }
 
         [Fact]
         public void BookItem_DecreasePrice_DecreaseByNegativePrice_ShouldThrowArgumentException()
         {
             BookItem bookOne = new BookItem();
-            bookOne.ItemName = "Шерлок Холмс";
-            bookOne.Author = "Артур Конан-Дойль";
-            bookOne.Genre = "детектив";
+            bookOne.ItemName = "РЁРµСЂР»РѕРє РҐРѕР»РјСЃ";
+            bookOne.Author = "РђСЂС‚СѓСЂ РљРѕРЅР°РЅ-Р”РѕР№Р»СЊ";
+            bookOne.Genre = "РґРµС‚РµРєС‚РёРІ";
 
             double decreasePrice = -5;
 
@@ -149,16 +149,16 @@ namespace StoreLib.Tests
                 return;
             }
 
-            Assert.True(false, "Ожидаемая ошибка не была выявлена");
+            Assert.True(false, "РћР¶РёРґР°РµРјР°СЏ РѕС€РёР±РєР° РЅРµ Р±С‹Р»Р° РІС‹СЏРІР»РµРЅР°");
         }
 
         [Fact]
         public void BookItem_DecreasePrice_ZeroOrNegativeTotalPriceAfterDecreasing_ShouldThrowArgumentException()
         {
             BookItem bookOne = new BookItem();
-            bookOne.ItemName = "Шерлок Холмс";
-            bookOne.Author = "Артур Конан-Дойль";
-            bookOne.Genre = "детектив";
+            bookOne.ItemName = "РЁРµСЂР»РѕРє РҐРѕР»РјСЃ";
+            bookOne.Author = "РђСЂС‚СѓСЂ РљРѕРЅР°РЅ-Р”РѕР№Р»СЊ";
+            bookOne.Genre = "РґРµС‚РµРєС‚РёРІ";
             bookOne.IncreasePrice(153.5);
 
             double decreasePrice = 205.5;
@@ -173,16 +173,16 @@ namespace StoreLib.Tests
                 return;
             }
 
-            Assert.True(false, "Ожидаемая ошибка не была выявлена");
+            Assert.True(false, "РћР¶РёРґР°РµРјР°СЏ РѕС€РёР±РєР° РЅРµ Р±С‹Р»Р° РІС‹СЏРІР»РµРЅР°");
         }
 
         [Fact]
         public void BookItem_IncreaseAmount_IncreaseByNegativeAmount_ShouldThrowArgumentException()
         {
             BookItem bookOne = new BookItem();
-            bookOne.ItemName = "Шерлок Холмс";
-            bookOne.Author = "Артур Конан-Дойль";
-            bookOne.Genre = "детектив";
+            bookOne.ItemName = "РЁРµСЂР»РѕРє РҐРѕР»РјСЃ";
+            bookOne.Author = "РђСЂС‚СѓСЂ РљРѕРЅР°РЅ-Р”РѕР№Р»СЊ";
+            bookOne.Genre = "РґРµС‚РµРєС‚РёРІ";
 
             int increaseAmount = -5;
 
@@ -196,16 +196,16 @@ namespace StoreLib.Tests
                 return;
             }
 
-            Assert.True(false, "Ожидаемая ошибка не была выявлена");
+            Assert.True(false, "РћР¶РёРґР°РµРјР°СЏ РѕС€РёР±РєР° РЅРµ Р±С‹Р»Р° РІС‹СЏРІР»РµРЅР°");
         }
 
         [Fact]
         public void BookItem_DecreaseAmount_DecreaseByNegativeAmount_ShouldThrowArgumentException()
         {
             BookItem bookOne = new BookItem();
-            bookOne.ItemName = "Шерлок Холмс";
-            bookOne.Author = "Артур Конан-Дойль";
-            bookOne.Genre = "детектив";
+            bookOne.ItemName = "РЁРµСЂР»РѕРє РҐРѕР»РјСЃ";
+            bookOne.Author = "РђСЂС‚СѓСЂ РљРѕРЅР°РЅ-Р”РѕР№Р»СЊ";
+            bookOne.Genre = "РґРµС‚РµРєС‚РёРІ";
 
             int decreaseAmount = -5;
 
@@ -219,16 +219,16 @@ namespace StoreLib.Tests
                 return;
             }
 
-            Assert.True(false, "Ожидаемая ошибка не была выявлена");
+            Assert.True(false, "РћР¶РёРґР°РµРјР°СЏ РѕС€РёР±РєР° РЅРµ Р±С‹Р»Р° РІС‹СЏРІР»РµРЅР°");
         }
 
         [Fact]
         public void BookItem_DecreaseAmount_ZeroOrNegativeTotalAmountAfterDecreasing_ShouldThrowArgumentException()
         {
             BookItem bookOne = new BookItem();
-            bookOne.ItemName = "Шерлок Холмс";
-            bookOne.Author = "Артур Конан-Дойль";
-            bookOne.Genre = "детектив";
+            bookOne.ItemName = "РЁРµСЂР»РѕРє РҐРѕР»РјСЃ";
+            bookOne.Author = "РђСЂС‚СѓСЂ РљРѕРЅР°РЅ-Р”РѕР№Р»СЊ";
+            bookOne.Genre = "РґРµС‚РµРєС‚РёРІ";
             bookOne.IncreaseAmount(5);
 
             int decreaseAmount = 20;
@@ -243,7 +243,7 @@ namespace StoreLib.Tests
                 return;
             }
 
-            Assert.True(false, "Ожидаемая ошибка не была выявлена");
+            Assert.True(false, "РћР¶РёРґР°РµРјР°СЏ РѕС€РёР±РєР° РЅРµ Р±С‹Р»Р° РІС‹СЏРІР»РµРЅР°");
         }
     }
 }
