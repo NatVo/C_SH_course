@@ -11,7 +11,7 @@ namespace StoreLib
         protected int employeesNumber = 1;
 
         public string Name { get; set; }
-        public string Adress { get; set; }        
+        public string Adress { get; set; }
         public int AmountOfEmployees { get { return employeesNumber; } }
 
         public void SetEmployees(int setEmployeeNum)
@@ -31,7 +31,7 @@ namespace StoreLib
             if (employee < 1)
             {
                 throw new ArgumentException(addZeroOrNegativeEmployeesMessage);
-            }                
+            }
             else
             {
                 employeesNumber += employee;
@@ -49,7 +49,7 @@ namespace StoreLib
                 if ((employeesNumber - employee) < 1)
                 {
                     throw new ArgumentException(zeroOrNegativeTotalAmountOfEmployeesMessage);
-                }                    
+                }
                 else
                 {
                     employeesNumber -= employee;
