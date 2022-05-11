@@ -11,6 +11,8 @@ namespace LessonDebugExceptions
 
         public DateRangePackage( List<DateRange> dateRanges )
         {
+            // присвоение переменной DateRanges значение параметра dateRanges в конструкторе, иначе её значение будет NULL, что приводит к ошибке
+            DateRanges = dateRanges;
         }
 
         public override string ToString()

@@ -156,8 +156,11 @@ namespace Lesson.Libs.Common.Types.Extensions.Test
         [TestMethod]
         public void DateRangeExtensions_SubtractDates_NightStayUnitKindFirstDateRangeEndsAtStartDateOfSecond_OneAdditionalDateRange()
         {
+            // исправление даты dateRange2: смена стартовой даты с DateTime( 2016, 6, 13, 14, 0, 0 ) на DateTime( 2016, 6, 18, 12, 0, 0 ),
+            // так как для корректного прохождения теста, необходимо, чтобы временные промежутки dateRange1 и dateRange2 имели пограничные
+            // конечную и стартовую даты соответсвенно
             var dateRange1 = new DateRange( new DateTime( 2016, 6, 15, 12, 0, 0 ), new DateTime( 2016, 6, 18, 12, 0, 0 ) );
-            var dateRange2 = new DateRange( new DateTime( 2016, 6, 13, 14, 0, 0 ), new DateTime( 2016, 6, 19, 12, 0, 0 ) );
+            var dateRange2 = new DateRange( new DateTime( 2016, 6, 18, 12, 0, 0 ), new DateTime( 2016, 6, 19, 12, 0, 0 ) );
 
             List<DateRange> additionalDateRanges = dateRange1.SubtractDates( dateRange2, false );
 
@@ -241,8 +244,10 @@ namespace Lesson.Libs.Common.Types.Extensions.Test
         [TestMethod]
         public void DateRangeExtensions_SubtractDates_DayStayUnitKindDateRangesHaveNoIntersection_OneAdditionalDateRange()
         {
+            // исправление даты dateRange2: смена стартовой даты с DateTime( 2016, 6, 16, 14, 0, 0 ) на DateTime( 2016, 6, 20, 14, 0, 0 ),
+            // так как для корректного прохождения теста, необходимо чтобы временные промежутки dateRange1 и dateRange2 не пересекались
             var dateRange1 = new DateRange( new DateTime( 2016, 6, 15, 12, 0, 0 ), new DateTime( 2016, 6, 18, 12, 0, 0 ) );
-            var dateRange2 = new DateRange( new DateTime( 2016, 6, 16, 14, 0, 0 ), new DateTime( 2016, 6, 21, 12, 0, 0 ) );
+            var dateRange2 = new DateRange( new DateTime( 2016, 6, 20, 14, 0, 0 ), new DateTime( 2016, 6, 21, 12, 0, 0 ) );
 
             List<DateRange> additionalDateRanges = dateRange1.SubtractDates( dateRange2, true );
 
@@ -308,7 +313,10 @@ namespace Lesson.Libs.Common.Types.Extensions.Test
         [TestMethod]
         public void DateRangeExtensions_EqualTo_DateRangesAreEqual_ReturnTrue()
         {
-            var dateRange1 = new DateRange( new DateTime( 2016, 6, 15, 12, 0, 0 ), new DateTime( 2016, 6, 18, 13, 0, 0 ) );
+            // исправление конечной даты в переменной dateRange1 с DateTime( 2016, 6, 18, 13, 0, 0 ) на DateTime( 2016, 6, 18, 12, 0, 0 ), поскольку
+            // данный тест проверяет даты на идентичность и должен вернуть значение true.
+            // Соответсвенно необходимо, чтобы временной промежуток dateRange1 был равен временному промежутку dateRange2.
+            var dateRange1 = new DateRange( new DateTime( 2016, 6, 15, 12, 0, 0 ), new DateTime( 2016, 6, 18, 12, 0, 0 ) );
             var dateRange2 = new DateRange( new DateTime( 2016, 6, 15, 12, 0, 0 ), new DateTime( 2016, 6, 18, 12, 0, 0 ) );
 
             bool equalityResult = dateRange1.EqualTo( dateRange2 );
@@ -571,6 +579,10 @@ namespace Lesson.Libs.Common.Types.Extensions.Test
             SortedSet<DateRange> result = dateRanges.JoinDateRanges();
 
             // Assert
+
+            // исправление в предпоследней строке new DateTime( 2021, 11, 1 ) на new DateTime( 2022, 11, 1 ), поскольку именно эта дата была задана при
+            // объявлении dateRanges, и она является начальной датой последнего 4-го временного диапазона, в результате применения метода JoinDateRanges.
+            // В первом случае, при DateTime( 2021, 11, 1 ) тест не будет пройден корректно
             Assert.AreEqual( 4, result.Count );
             Assert.AreEqual( new DateTime( 2017, 1, 11, 1, 1, 1 ), result.ElementAt( 0 ).StartDateTime );
             Assert.AreEqual( new DateTime( 2018, 1, 1, 1, 0, 0 ), result.ElementAt( 0 ).EndDateTime );
@@ -578,7 +590,7 @@ namespace Lesson.Libs.Common.Types.Extensions.Test
             Assert.AreEqual( new DateTime( 2019, 1, 1 ), result.ElementAt( 1 ).EndDateTime );
             Assert.AreEqual( new DateTime( 2019, 2, 1 ), result.ElementAt( 2 ).StartDateTime );
             Assert.AreEqual( new DateTime( 2020, 12, 1 ), result.ElementAt( 2 ).EndDateTime );
-            Assert.AreEqual( new DateTime( 2021, 11, 1 ), result.ElementAt( 3 ).StartDateTime );
+            Assert.AreEqual( new DateTime( 2022, 11, 1 ), result.ElementAt( 3 ).StartDateTime );
             Assert.AreEqual( DateTime.MaxValue, result.ElementAt( 3 ).EndDateTime );
         }
 
@@ -586,18 +598,26 @@ namespace Lesson.Libs.Common.Types.Extensions.Test
         public void DateRangeExtensions_JoinDateRanges_TwoNestedDateRanges_ReturnsWithoutOneDateRanges()
         {
             // Arrange
+
+            // исправление во втором врмеенном диапазоне стартовой даты DateTime( 2019, 5, 1 ) на DateTime( 2019, 3, 20 ),
+            // это нужно, чтобы 2-й временной промежуток оказался вложенным в 1-й, что необходимо для корректного прохождения теста
             IEnumerable<DateRange> dateRanges = new List<DateRange>
             {
                 new DateRange( new DateTime( 2019, 3, 1 ), new DateTime( 2019, 4, 1 ) ),
-                new DateRange( new DateTime( 2019, 5, 1 ), new DateTime( 2019, 5, 1 ) ),
+                new DateRange( new DateTime( 2019, 3, 20 ), new DateTime( 2019, 5, 1 ) ),
             };
 
             // Act
             SortedSet<DateRange> result = dateRanges.JoinDateRanges();
 
             // Assert
+
+            // соответсвенно в результате применения метода JoinDateRanges из 2-х вложенных промежутков получится один
+            // с датой старта: DateTime( 2019, 3, 1 ) и датой окончания: DateTime( 2019, 5, 1 )
+            // следовательно, проверяя на корректность стартовую дату итогового временного промежутка,
+            // её необходимо сравнивать с DateTime( 2019, 3, 1 ), а не с DateTime( 2019, 2, 1 ), как было изначально
             Assert.AreEqual( 1, result.Count );
-            Assert.AreEqual( new DateTime( 2019, 2, 1 ), result.ElementAt( 0 ).StartDateTime );
+            Assert.AreEqual( new DateTime( 2019, 3, 1 ), result.ElementAt( 0 ).StartDateTime );
             Assert.AreEqual( new DateTime( 2019, 5, 1 ), result.ElementAt( 0 ).EndDateTime );
         }
 

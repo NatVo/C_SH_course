@@ -9,6 +9,10 @@ namespace LessonDebugExceptions
     {
         public static void Main()
         {
+            // изменение стартовой даты в последней паре дат
+            // с DateTime( 2020, 1, 1 ) на ( 2020, 1, 2 ),
+            // так как она является ключом в паре при добавлении
+            // последней в словарь и не может повторяться
             var dates = new Dictionary<DateTime, DateTime>
             {
                 {
@@ -32,14 +36,15 @@ namespace LessonDebugExceptions
                     new DateTime( 2020, 1, 17 )
                 },
                 {
-                    new DateTime( 2020, 1, 1 ),
+                    new DateTime( 2020, 1, 2 ),
                     new DateTime( 2020, 1, 18 )
                 },
             };
 
             Console.WriteLine( $"Collection {nameof( dates )} contains {dates.Count} elements" );
 
-            var dateRangePackage = new DateRangePackage( dates.Select( pair => new Lesson.Libs.Common.Types.DateRange( pair.Value, pair.Key) ).ToList() );
+            // изменение DateRange(pair.Value, pair.Key ) на DateRange(pair.Key, pair.Value ) так первый параметр - это начальная дата, а второй - конечная, а не наоборот
+            var dateRangePackage = new DateRangePackage( dates.Select( pair => new Lesson.Libs.Common.Types.DateRange( pair.Key, pair.Value ) ).ToList() );
 
             var comparer = new DateRangeComparer();
 
