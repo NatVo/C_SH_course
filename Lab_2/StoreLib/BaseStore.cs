@@ -4,9 +4,9 @@ namespace StoreLib
 {
     public abstract class BaseStore
     {
-        public const string addZeroOrNegativeEmployeesMessage = "Количество принимаемых в магазин работников не может быть нулевым или отрицательным!\n";
-        public const string removeZeroOrNegativeEmployeesMessage = "Количество увольняемых из магазина работников не может быть нулевым или отрицательным!\n";
-        public const string zeroOrNegativeTotalAmountOfEmployeesMessage = "Общее количество работников магазина не может быть нулевым или отрицательным!\n";
+        public const string AddZeroOrNegativeEmployeesMessage = "Количество принимаемых в магазин работников не может быть нулевым или отрицательным!\n";
+        public const string RemoveZeroOrNegativeEmployeesMessage = "Количество увольняемых из магазина работников не может быть нулевым или отрицательным!\n";
+        public const string ZeroOrNegativeTotalAmountOfEmployeesMessage = "Общее количество работников магазина не может быть нулевым или отрицательным!\n";
 
         protected int employeesNumber = 1;
 
@@ -22,7 +22,7 @@ namespace StoreLib
             }
             else
             {
-                throw new ArgumentException(zeroOrNegativeTotalAmountOfEmployeesMessage);
+                throw new ArgumentException(ZeroOrNegativeTotalAmountOfEmployeesMessage);
             }
         }
 
@@ -30,7 +30,7 @@ namespace StoreLib
         {
             if (employee < 1)
             {
-                throw new ArgumentException(addZeroOrNegativeEmployeesMessage);
+                throw new ArgumentException(AddZeroOrNegativeEmployeesMessage);
             }
             else
             {
@@ -42,13 +42,13 @@ namespace StoreLib
         {
             if (employee < 1)
             {
-                throw new ArgumentException(removeZeroOrNegativeEmployeesMessage);
+                throw new ArgumentException(RemoveZeroOrNegativeEmployeesMessage);
             }
             else
             {
                 if ((employeesNumber - employee) < 1)
                 {
-                    throw new ArgumentException(zeroOrNegativeTotalAmountOfEmployeesMessage);
+                    throw new ArgumentException(ZeroOrNegativeTotalAmountOfEmployeesMessage);
                 }
                 else
                 {

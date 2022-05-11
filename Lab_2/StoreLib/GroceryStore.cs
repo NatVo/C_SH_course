@@ -6,7 +6,7 @@ namespace StoreLib
 {
     public class GroceryStore : BaseStore, IGroceryStore
     {
-        public const string cantFindBookItemToDeleteMessage = "Невозможно удалить продовольственные товары с указанным названием!\n";
+        public const string CantFindGroceryItemToDeleteMessage = "Невозможно удалить продовольственные товары с указанным названием!\n";
 
         private TimeSpan _timeStart = new TimeSpan(8, 0, 0);
         private TimeSpan _timeFinish = new TimeSpan(21, 0, 0);
@@ -24,19 +24,10 @@ namespace StoreLib
 
         public override void DeleteItem(string itemName)
         {
-            bool flag = false;
-            for (int i = _groceryItems.Count - 1; i > -1; i--)
+            GroceryItem groceryItem = _groceryItems.Find(x => x.ItemName == itemName);
+            if (!_groceryItems.Remove(groceryItem))
             {
-                if (_groceryItems[i].ItemName == itemName)
-                {
-                    _groceryItems.RemoveAt(i);
-                    flag = true;
-                }
-            }
-
-            if (!flag)
-            {
-                throw new ArgumentException(cantFindBookItemToDeleteMessage);
+                throw new ArgumentException(CantFindGroceryItemToDeleteMessage);
             }
         }
 
@@ -47,7 +38,7 @@ namespace StoreLib
             Console.WriteLine();
             foreach (GroceryItem gItem in _groceryItems)
             {
-                Console.WriteLine($"{counter}) Название продукта: {gItem.ItemName}, Тип продукта: {gItem.ItemType}, Стоимость: {gItem.GetPrice}, Количество: {gItem.GetAmount}");
+                Console.WriteLine($"{counter}) Название продукта: {gItem.ItemName}, Тип продукта: {gItem.ItemType}, Стоимость: {gItem.Price}, Количество: {gItem.Amount}");
                 counter += 1;
             }
         }

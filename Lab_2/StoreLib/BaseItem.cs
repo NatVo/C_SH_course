@@ -6,20 +6,20 @@ namespace StoreLib
 {
     public abstract class BaseItem
     {
-        public const string increaseByNegativePriceMessage = "Добавочная стоимость не может быть отрицательной!\n";
-        public const string decreaseByNegativePriceMessage = "Уменьшающая стоимость не может быть отрицательной!\n";
-        public const string negativeTotalPriceMessage = "Стоимость товара не может быть отрицательной!";
+        public const string IncreaseByNegativePriceMessage = "Добавочная стоимость не может быть отрицательной!\n";
+        public const string DecreaseByNegativePriceMessage = "Уменьшающая стоимость не может быть отрицательной!\n";
+        public const string NegativeTotalPriceMessage = "Стоимость товара не может быть отрицательной!";
 
-        public const string increaseByNegativeAmountMessage = "Величина для увеличения количества товара не может быть отрицательной!\n";
-        public const string decreaseByNegativeAmountMessage = "Величина для уменьшения количества товара не может быть отрицательной!\n";
-        public const string negativeTotalAmountMessage = "Количество товара не может быть отрицательным!";
+        public const string IncreaseByNegativeAmountMessage = "Величина для увеличения количества товара не может быть отрицательной!\n";
+        public const string DecreaseByNegativeAmountMessage = "Величина для уменьшения количества товара не может быть отрицательной!\n";
+        public const string NegativeTotalAmountMessage = "Количество товара не может быть отрицательным!";
 
         private double _price = 0;
         private int _amount = 0;
 
         public string ItemName { get; set; }
-        public double GetPrice { get { return _price; } }
-        public int GetAmount { get { return _amount; } }
+        public double Price { get { return _price; } }
+        public int Amount { get { return _amount; } }
 
         public void SetPrice(double setPrice)
         {
@@ -29,7 +29,7 @@ namespace StoreLib
             }
             else
             {
-                throw new ArgumentException(negativeTotalPriceMessage);
+                throw new ArgumentException(NegativeTotalPriceMessage);
             }
         }
 
@@ -37,7 +37,7 @@ namespace StoreLib
         {
             if (increasePrice < 0)
             {
-                throw new ArgumentException(increaseByNegativePriceMessage);
+                throw new ArgumentException(IncreaseByNegativePriceMessage);
             }
             else
             {
@@ -49,13 +49,13 @@ namespace StoreLib
         {
             if (decreasePrice < 0)
             {
-                throw new ArgumentException(decreaseByNegativePriceMessage);
+                throw new ArgumentException(DecreaseByNegativePriceMessage);
             }
             else
             {
                 if ((_price - decreasePrice) < 0)
                 {
-                    throw new ArgumentException(negativeTotalPriceMessage);
+                    throw new ArgumentException(NegativeTotalPriceMessage);
                 }
                 else
                 {
@@ -72,7 +72,7 @@ namespace StoreLib
             }
             else
             {
-                throw new ArgumentException(negativeTotalAmountMessage);
+                throw new ArgumentException(NegativeTotalAmountMessage);
             }
         }
 
@@ -80,7 +80,7 @@ namespace StoreLib
         {
             if (incrAmount < 0)
             {
-                throw new ArgumentException(increaseByNegativeAmountMessage);
+                throw new ArgumentException(IncreaseByNegativeAmountMessage);
             }
             else
             {
@@ -92,13 +92,13 @@ namespace StoreLib
         {
             if (decrAmount < 0)
             {
-                throw new ArgumentException(decreaseByNegativeAmountMessage);
+                throw new ArgumentException(DecreaseByNegativeAmountMessage);
             }
             else
             {
                 if ((_amount - decrAmount) <= 0)
                 {
-                    throw new ArgumentException(negativeTotalAmountMessage);
+                    throw new ArgumentException(NegativeTotalAmountMessage);
                 }
                 else
                 {

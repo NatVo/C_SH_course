@@ -7,9 +7,8 @@ namespace StoreLib
     public interface IItem
     {
         string ItemName { get; set; }
-        double GetPrice { get; }
-        int GetAmount { get; }
-
+        double Price { get; }
+        int Amount { get; }
         void SetPrice(double setPrice);
         void IncreasePrice(double incrPrice);
         void DecreasePrice(double decrPrice);

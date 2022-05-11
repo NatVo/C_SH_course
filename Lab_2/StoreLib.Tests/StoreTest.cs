@@ -20,7 +20,7 @@ namespace StoreLib.Tests
             }
             catch (System.ArgumentException e)
             {
-                Assert.Equal(e.Message, BookStore.addZeroOrNegativeEmployeesMessage);
+                Assert.Equal(e.Message, BookStore.AddZeroOrNegativeEmployeesMessage);
                 return;
             }
 
@@ -43,7 +43,7 @@ namespace StoreLib.Tests
             }
             catch (System.ArgumentException e)
             {
-                Assert.Equal(e.Message, BookStore.removeZeroOrNegativeEmployeesMessage);
+                Assert.Equal(e.Message, BookStore.RemoveZeroOrNegativeEmployeesMessage);
                 return;
             }
 
@@ -66,7 +66,7 @@ namespace StoreLib.Tests
             }
             catch (System.ArgumentException e)
             {
-                Assert.Equal(e.Message, BookStore.zeroOrNegativeTotalAmountOfEmployeesMessage);
+                Assert.Equal(e.Message, BookStore.ZeroOrNegativeTotalAmountOfEmployeesMessage);
                 return;
             }
 
@@ -96,7 +96,7 @@ namespace StoreLib.Tests
             }
             catch (System.ArgumentException e)
             {
-                Assert.Equal(e.Message, BookStore.cantFindBookItemToDeleteMessage);
+                Assert.Equal(e.Message, BookStore.CantFindBookItemToDeleteMessage);
                 return;
             }
 
@@ -122,7 +122,7 @@ namespace StoreLib.Tests
             }
             catch (System.ArgumentException e)
             {
-                Assert.Equal(e.Message, BookItem.increaseByNegativePriceMessage);
+                Assert.Equal(e.Message, BookItem.IncreaseByNegativePriceMessage);
                 return;
             }
 
@@ -145,7 +145,7 @@ namespace StoreLib.Tests
             }
             catch (System.ArgumentException e)
             {
-                Assert.Equal(e.Message, BookItem.decreaseByNegativePriceMessage);
+                Assert.Equal(e.Message, BookItem.DecreaseByNegativePriceMessage);
                 return;
             }
 
@@ -169,7 +169,7 @@ namespace StoreLib.Tests
             }
             catch (System.ArgumentException e)
             {
-                Assert.Equal(e.Message, BookItem.negativeTotalPriceMessage);
+                Assert.Equal(e.Message, BookItem.NegativeTotalPriceMessage);
                 return;
             }
 
@@ -192,7 +192,7 @@ namespace StoreLib.Tests
             }
             catch (System.ArgumentException e)
             {
-                Assert.Equal(e.Message, BookItem.increaseByNegativeAmountMessage);
+                Assert.Equal(e.Message, BookItem.IncreaseByNegativeAmountMessage);
                 return;
             }
 
@@ -215,7 +215,7 @@ namespace StoreLib.Tests
             }
             catch (System.ArgumentException e)
             {
-                Assert.Equal(e.Message, BookItem.decreaseByNegativeAmountMessage);
+                Assert.Equal(e.Message, BookItem.DecreaseByNegativeAmountMessage);
                 return;
             }
 
@@ -239,7 +239,7 @@ namespace StoreLib.Tests
             }
             catch (System.ArgumentException e)
             {
-                Assert.Equal(e.Message, BookItem.negativeTotalAmountMessage);
+                Assert.Equal(e.Message, BookItem.NegativeTotalAmountMessage);
                 return;
             }
 

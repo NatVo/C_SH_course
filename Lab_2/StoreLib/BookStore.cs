@@ -6,7 +6,7 @@ namespace StoreLib
 {
     public class BookStore : BaseStore, IBookStore
     {
-        public const string cantFindBookItemToDeleteMessage = "Невозможно удалить книжные товары с указанным названием!\n";
+        public const string CantFindBookItemToDeleteMessage = "Невозможно удалить книжные товары с указанным названием!\n";
 
         private TimeSpan _timeStart = new TimeSpan(9, 0, 0);
         private TimeSpan _timeFinish = new TimeSpan(18, 0, 0);
@@ -25,19 +25,10 @@ namespace StoreLib
 
         public override void DeleteItem(string itemName)
         {
-            bool flag = false;
-            for (int i = _bookItems.Count - 1; i > -1; i--)
+            BookItem bookItem = _bookItems.Find(x => x.ItemName == itemName);
+            if(!_bookItems.Remove(bookItem))
             {
-                if (_bookItems[i].ItemName == itemName)
-                {
-                    _bookItems.RemoveAt(i);
-                    flag = true;
-                }
-            }
-
-            if (!flag)
-            {
-                throw new ArgumentException(cantFindBookItemToDeleteMessage);
+                throw new ArgumentException(CantFindBookItemToDeleteMessage);
             }
         }
 
@@ -48,7 +39,7 @@ namespace StoreLib
             Console.WriteLine();
             foreach (BookItem bItem in _bookItems)
             {
-                Console.WriteLine($"{counter}) Название книги: {bItem.ItemName}, Автор: {bItem.Author}, Жанр: {bItem.Genre}, Стоимость: {bItem.GetPrice}, Количество: {bItem.GetAmount}");
+                Console.WriteLine($"{counter}) Название книги: {bItem.ItemName}, Автор: {bItem.Author}, Жанр: {bItem.Genre}, Стоимость: {bItem.Price}, Количество: {bItem.Amount}");
                 counter += 1;
             }
         }
