@@ -1,4 +1,4 @@
-﻿using System.Data;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace UniversityLib
@@ -11,7 +11,53 @@ namespace UniversityLib
 
     public class UniversityPrintInfo
     {
-        private static string _connectionString = @"Data Source=LAPTOP-SSK5J58N;Initial Catalog=university;Pooling=true;Integrated Security=SSPI;";
+        private static string _connectionString = @"Data Source=DESKTOP-QNG330J;Initial Catalog=university;Pooling=true;Integrated Security=SSPI;";
+
+        public void PrintGeneralData()
+        {
+
+            int studentAmount;
+            int lecturerAmount;
+            int courseAmount;
+
+            using ( SqlConnection connection = new SqlConnection( _connectionString ) )
+            {
+                connection.Open();
+                using ( SqlCommand command = new SqlCommand() )
+                {
+                    command.Connection = connection;
+                    command.CommandText =
+                        @"
+                            SELECT COUNT([StudentId]) FROM [Student];
+                        ";
+                    studentAmount = Convert.ToInt32( command.ExecuteScalar() );
+                }
+
+                using ( SqlCommand command = new SqlCommand() )
+                {
+                    command.Connection = connection;
+                    command.CommandText =
+                        @"
+                            SELECT COUNT([LecturerId]) FROM [Lecturer];
+                        ";
+                    lecturerAmount = Convert.ToInt32( command.ExecuteScalar() );
+                }
+
+                using ( SqlCommand command = new SqlCommand() )
+                {
+                    command.Connection = connection;
+                    command.CommandText =
+                        @"
+                            SELECT COUNT([CourseId]) FROM [Course];
+                        ";
+                    courseAmount = Convert.ToInt32( command.ExecuteScalar() );
+                }
+            }
+
+            Console.WriteLine( $"\n{"Sudents:",-10}{"Lecturers:",25}{"Courses:",25}" );
+            Console.WriteLine( $"------------------------------------------------------------" );
+            Console.WriteLine( $"\n{studentAmount,-10}{lecturerAmount,25}{courseAmount,25}" );
+        }
 
         public void PrintCourseNumberOfStudents()
         {

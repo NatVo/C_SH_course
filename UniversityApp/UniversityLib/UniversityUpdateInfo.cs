@@ -1,11 +1,11 @@
-﻿using System.Data;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace UniversityLib
 {
     internal class UniversityUpdateInfo
     {
-        private static string _connectionString = @"Data Source=LAPTOP-SSK5J58N;Initial Catalog=university;Pooling=true;Integrated Security=SSPI;";
+        private static string _connectionString = @"Data Source=DESKTOP-QNG330J;Initial Catalog=university;Pooling=true;Integrated Security=SSPI;";
 
         public bool UpdateLecturerInLecturerCourse(string oldLecturerFirstName, string oldLecturerLastName,
                                                    string newLecturerFirstName, string newLecturerLastName, string courseName)

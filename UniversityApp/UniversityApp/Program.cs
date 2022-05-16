@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using UniversityLib;
 using System.Data.SqlClient;
@@ -76,9 +76,10 @@ namespace UniversityApp
             universityManageInfo.AddStudentGroupCourseInfo("PS-1", "OOPBasics");
 
             universityManageInfo.UpdateLecturerInLecturerCourseInfo("Ivan", "Smirnov",
-                                                                  "Alexander", "Gubaev", "Cryptography");
+                                                                    "Alexander", "Gubaev", "Cryptography");
 
             universityManageInfo.PrintCourseNumberOfStudentsInfo();
+            universityManageInfo.PrintGeneralDataInfo();
 
             Console.ReadKey();
         }

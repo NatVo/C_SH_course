@@ -1,10 +1,10 @@
-﻿using System.Data.SqlClient;
+using System.Data.SqlClient;
 
 namespace UniversityLib
 {
     public class UniversityTables
     {
-        private static string _connectionString = @"Data Source=LAPTOP-SSK5J58N;Initial Catalog=university;Pooling=true;Integrated Security=SSPI;";
+        private static string _connectionString = @"Data Source=DESKTOP-QNG330J;Initial Catalog=university;Pooling=true;Integrated Security=SSPI;";
 
         public void CreateFacultyTable()
         {

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -170,6 +170,18 @@ namespace UniversityLib
             catch (Exception exception)
             {
                 Console.WriteLine($"\nUnable to print course - number of students information {exception.Message}");
+            }
+        }
+
+        public void PrintGeneralDataInfo()
+        {
+            try
+            {
+                _universityPrintInfo.PrintGeneralData();
+            }
+            catch ( Exception exception )
+            {
+                Console.WriteLine( $"\nUnable to print general information {exception.Message}" );
             }
         }
     }
