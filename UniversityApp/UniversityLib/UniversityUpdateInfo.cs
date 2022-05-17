@@ -7,15 +7,15 @@ namespace UniversityLib
     {
         private static string _connectionString = @"Data Source=DESKTOP-QNG330J;Initial Catalog=university;Pooling=true;Integrated Security=SSPI;";
 
-        public bool UpdateLecturerInLecturerCourse(string oldLecturerFirstName, string oldLecturerLastName,
-                                                   string newLecturerFirstName, string newLecturerLastName, string courseName)
+        public bool UpdateLecturerInLecturerCourse( string oldLecturerFirstName, string oldLecturerLastName,
+                                                    string newLecturerFirstName, string newLecturerLastName, string courseName )
         {
             int existingLecturerCourseId;
 
-            using (SqlConnection connection = new SqlConnection(_connectionString))
+            using (SqlConnection connection = new SqlConnection( _connectionString) )
             {
                 connection.Open();
-                using (SqlCommand command = connection.CreateCommand())
+                using ( SqlCommand command = connection.CreateCommand() )
                 {
                     command.CommandText = @"
                         SELECT [LecturerCourse].[LecturerCourseID]
@@ -29,18 +29,18 @@ namespace UniversityLib
                                 AND [Course].[CourseName] = @courseName
                             )";
 
-                    command.Parameters.Add("@oldLecturerFirstName", SqlDbType.NVarChar).Value = oldLecturerFirstName;
-                    command.Parameters.Add("@oldLecturerLastName", SqlDbType.NVarChar).Value = oldLecturerLastName;
-                    command.Parameters.Add("@courseName", SqlDbType.NVarChar).Value = courseName;
-
-                    existingLecturerCourseId = Convert.ToInt32(command.ExecuteScalar());
+                    command.Parameters.Add( "@oldLecturerFirstName", SqlDbType.NVarChar ).Value = oldLecturerFirstName;
+                    command.Parameters.Add( "@oldLecturerLastName", SqlDbType.NVarChar ).Value = oldLecturerLastName;
+                    command.Parameters.Add( "@courseName", SqlDbType.NVarChar ).Value = courseName;
+                    Console.WriteLine( command.CommandText );
+                    existingLecturerCourseId = Convert.ToInt32( command.ExecuteScalar() );
                 }
 
-                Console.WriteLine($"existingLecturerCourseId: {existingLecturerCourseId}");
+                Console.WriteLine( $"existingLecturerCourseId: {existingLecturerCourseId}" );
 
-                if (existingLecturerCourseId > 0)
+                if ( existingLecturerCourseId > 0 )
                 {
-                    using (SqlCommand command = connection.CreateCommand())
+                    using ( SqlCommand command = connection.CreateCommand() )
                     {
                         command.CommandText = @"
                         UPDATE [LecturerCourse]

@@ -82,6 +82,7 @@ namespace UniversityLib
                                     [StudentId] [int] IDENTITY(1,1) NOT NULL CONSTRAINT PK_Student PRIMARY KEY,
 	                                [StudentFirstName] [nchar](20) NULL,
 	                                [StudentLastName] [nchar](20) NULL,
+                                    [StudentAge] [int] NULL,
                                     [StudentGroupID] [int] FOREIGN KEY REFERENCES [dbo].[StudentGroup](StudentGroupId) ON DELETE CASCADE
                                 )";
                     command.ExecuteNonQuery();

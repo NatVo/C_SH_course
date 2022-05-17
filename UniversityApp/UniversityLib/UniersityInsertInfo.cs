@@ -81,30 +81,33 @@ namespace UniversityLib
             }
         }
 
-        public void InsertStudent(string studentFirstName, string studentLastName, string studentGroupName)
+        public void InsertStudent( string studentFirstName, string studentLastName, int studentAge, string studentGroupName )
         {
-            using (SqlConnection connection = new SqlConnection(_connectionString))
+            using ( SqlConnection connection = new SqlConnection(_connectionString) )
             {
                 connection.Open();
-                using (SqlCommand command = connection.CreateCommand())
+                using ( SqlCommand command = connection.CreateCommand() )
                 {
                     command.CommandText = @"
                     INSERT INTO [Student]
                        (
                             [StudentFirstName],
                             [StudentLastName],
+                            [StudentAge],
                             [StudentGroupId]
                        ) 
                     VALUES 
                        (
                             @studentFirstName,
                             @studentLastName,
+                            @studentAge,
                             (SELECT [StudentGroupId] FROM [StudentGroup] WHERE [StudentGroupName]=@studentGroupName)
                        )";
 
-                    command.Parameters.Add("@studentFirstName", SqlDbType.NVarChar).Value = studentFirstName;
-                    command.Parameters.Add("@studentLastName", SqlDbType.NVarChar).Value = studentLastName;
-                    command.Parameters.Add("@studentGroupName", SqlDbType.NVarChar).Value = studentGroupName;
+                    command.Parameters.Add( "@studentFirstName", SqlDbType.NVarChar ).Value = studentFirstName;
+                    command.Parameters.Add( "@studentLastName", SqlDbType.NVarChar ).Value = studentLastName;
+                    command.Parameters.Add( "@studentAge", SqlDbType.Int ).Value = studentAge;
+                    command.Parameters.Add( "@studentGroupName", SqlDbType.NVarChar ).Value = studentGroupName;
 
                     command.ExecuteNonQuery();
                 }
@@ -190,12 +193,12 @@ namespace UniversityLib
             }
         }
 
-        public void InsertStudentGroupCourse(string studentGroupName, string courseName)
+        public void InsertStudentGroupCourse(string studentGroupName, string courseName )
         {
-            using (SqlConnection connection = new SqlConnection(_connectionString))
+            using (SqlConnection connection = new SqlConnection( _connectionString) )
             {
                 connection.Open();
-                using (SqlCommand command = connection.CreateCommand())
+                using ( SqlCommand command = connection.CreateCommand() )
                 {
                     command.CommandText = @"
                     INSERT INTO [StudentGroupCourse]
