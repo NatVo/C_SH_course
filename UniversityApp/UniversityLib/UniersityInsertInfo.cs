@@ -7,12 +7,12 @@ namespace UniversityLib
     {
         private static string _connectionString = @"Data Source=DESKTOP-QNG330J;Initial Catalog=university;Pooling=true;Integrated Security=SSPI;";
         
-        public void InsertFaculty(string facultyName)
+        public void InsertFaculty( string facultyName )
         {
-            using (SqlConnection connection = new SqlConnection(_connectionString))
+            using ( SqlConnection connection = new SqlConnection( _connectionString) )
             {
                 connection.Open();
-                using (SqlCommand command = connection.CreateCommand())
+                using (SqlCommand command = connection.CreateCommand() )
                 {
                     command.CommandText = @"
                     INSERT INTO [Faculty]
@@ -20,19 +20,19 @@ namespace UniversityLib
                     VALUES 
                        (@facultyName)";
 
-                    command.Parameters.Add("@facultyName", SqlDbType.NVarChar).Value = facultyName;
+                    command.Parameters.Add( "@facultyName", SqlDbType.NVarChar ).Value = facultyName;
 
                     command.ExecuteNonQuery();
                 }
             }
         }
 
-        public void InsertDepartment(string departmentName, string facultyName)
+        public void InsertDepartment( string departmentName, string facultyName )
         {
-            using (SqlConnection connection = new SqlConnection(_connectionString))
+            using ( SqlConnection connection = new SqlConnection( _connectionString ) )
             {
                 connection.Open();
-                using (SqlCommand command = connection.CreateCommand())
+                using ( SqlCommand command = connection.CreateCommand() )
                 {
                     command.CommandText = @"
                     INSERT INTO [Department]
@@ -46,20 +46,20 @@ namespace UniversityLib
                             (SELECT [FacultyId] FROM [Faculty] WHERE [FacultyName]=@facultyName)
                        )";
 
-                    command.Parameters.Add("@departmentName", SqlDbType.NVarChar).Value = departmentName;
-                    command.Parameters.Add("@facultyName", SqlDbType.NVarChar).Value = facultyName;
+                    command.Parameters.Add( "@departmentName", SqlDbType.NVarChar ).Value = departmentName;
+                    command.Parameters.Add( "@facultyName", SqlDbType.NVarChar ).Value = facultyName;
 
                     command.ExecuteNonQuery();
                 }
             }
         }
 
-        public void InsertStudentGroup(string studentGroupName, string departmentName)
+        public void InsertStudentGroup( string studentGroupName, string departmentName )
         {
-            using (SqlConnection connection = new SqlConnection(_connectionString))
+            using (SqlConnection connection = new SqlConnection( _connectionString ) )
             {
                 connection.Open();
-                using (SqlCommand command = connection.CreateCommand())
+                using ( SqlCommand command = connection.CreateCommand() )
                 {
                     command.CommandText = @"
                     INSERT INTO [StudentGroup]
@@ -73,8 +73,8 @@ namespace UniversityLib
                             (SELECT [DepartmentId] FROM [Department] WHERE [DepartmentName]=@departmentName)
                        )";
 
-                    command.Parameters.Add("@studentGroupName", SqlDbType.NVarChar).Value = studentGroupName;
-                    command.Parameters.Add("@departmentName", SqlDbType.NVarChar).Value = departmentName;
+                    command.Parameters.Add( "@studentGroupName", SqlDbType.NVarChar ).Value = studentGroupName;
+                    command.Parameters.Add( "@departmentName", SqlDbType.NVarChar ).Value = departmentName;
 
                     command.ExecuteNonQuery();
                 }
@@ -83,7 +83,7 @@ namespace UniversityLib
 
         public void InsertStudent( string studentFirstName, string studentLastName, int studentAge, string studentGroupName )
         {
-            using ( SqlConnection connection = new SqlConnection(_connectionString) )
+            using ( SqlConnection connection = new SqlConnection( _connectionString ) )
             {
                 connection.Open();
                 using ( SqlCommand command = connection.CreateCommand() )
@@ -114,12 +114,12 @@ namespace UniversityLib
             }
         }
 
-        public void InsertLecturer(string lecturerFirstName, string lecturerLastName)
+        public void InsertLecturer( string lecturerFirstName, string lecturerLastName )
         {
-            using (SqlConnection connection = new SqlConnection(_connectionString))
+            using ( SqlConnection connection = new SqlConnection( _connectionString ) )
             {
                 connection.Open();
-                using (SqlCommand command = connection.CreateCommand())
+                using ( SqlCommand command = connection.CreateCommand() )
                 {
                     command.CommandText = @"
                     INSERT INTO [Lecturer]
@@ -141,12 +141,12 @@ namespace UniversityLib
             }
         }
 
-        public void InsertCourse(string courseName)
+        public void InsertCourse( string courseName )
         {
-            using (SqlConnection connection = new SqlConnection(_connectionString))
+            using ( SqlConnection connection = new SqlConnection( _connectionString ) )
             {
                 connection.Open();
-                using (SqlCommand command = connection.CreateCommand())
+                using ( SqlCommand command = connection.CreateCommand() )
                 {
                     command.CommandText = @"
                     INSERT INTO [Course]
@@ -154,19 +154,19 @@ namespace UniversityLib
                     VALUES 
                        (@courseName)";
 
-                    command.Parameters.Add("@courseName", SqlDbType.NVarChar).Value = courseName;
+                    command.Parameters.Add( "@courseName", SqlDbType.NVarChar ).Value = courseName;
 
                     command.ExecuteNonQuery();
                 }
             }
         }
 
-        public void InsertLecturerCourse(string lecturerFirstName, string lecturerLastName, string courseName)
+        public void InsertLecturerCourse( string lecturerFirstName, string lecturerLastName, string courseName )
         {
-            using (SqlConnection connection = new SqlConnection(_connectionString))
+            using ( SqlConnection connection = new SqlConnection( _connectionString) )
             {
                 connection.Open();
-                using (SqlCommand command = connection.CreateCommand())
+                using ( SqlCommand command = connection.CreateCommand())
                 {
                     command.CommandText = @"
                     INSERT INTO [LecturerCourse]
@@ -184,18 +184,18 @@ namespace UniversityLib
                             (SELECT [CourseId] FROM [Course] WHERE [CourseName]=@courseName)
                        )";
 
-                    command.Parameters.Add("@lecturerFirstName", SqlDbType.NVarChar).Value = lecturerFirstName;
-                    command.Parameters.Add("@lecturerLastName", SqlDbType.NVarChar).Value = lecturerLastName;
-                    command.Parameters.Add("@courseName", SqlDbType.NVarChar).Value = courseName;
+                    command.Parameters.Add( "@lecturerFirstName", SqlDbType.NVarChar ).Value = lecturerFirstName;
+                    command.Parameters.Add( "@lecturerLastName", SqlDbType.NVarChar ).Value = lecturerLastName;
+                    command.Parameters.Add( "@courseName", SqlDbType.NVarChar ).Value = courseName;
 
                     command.ExecuteNonQuery();
                 }
             }
         }
 
-        public void InsertStudentGroupCourse(string studentGroupName, string courseName )
+        public void InsertStudentGroupCourse( string studentGroupName, string courseName )
         {
-            using (SqlConnection connection = new SqlConnection( _connectionString) )
+            using ( SqlConnection connection = new SqlConnection( _connectionString) )
             {
                 connection.Open();
                 using ( SqlCommand command = connection.CreateCommand() )
@@ -212,13 +212,12 @@ namespace UniversityLib
                             (SELECT [CourseId] FROM [Course] WHERE [CourseName]=@courseName)
                        )";
 
-                    command.Parameters.Add("@studentGroupName", SqlDbType.NVarChar).Value = studentGroupName;
-                    command.Parameters.Add("@courseName", SqlDbType.NVarChar).Value = courseName;
+                    command.Parameters.Add( "@studentGroupName", SqlDbType.NVarChar ).Value = studentGroupName;
+                    command.Parameters.Add( "@courseName", SqlDbType.NVarChar ).Value = courseName;
 
                     command.ExecuteNonQuery();
                 }
             }
         }
-
     }
 }

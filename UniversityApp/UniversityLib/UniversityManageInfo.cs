@@ -160,6 +160,29 @@ namespace UniversityLib
                 Console.WriteLine( $"\nUnable to update lecturer/course info - {exception.Message}" );
             }
         }
+        public void PrintGeneralDataInfo()
+        {
+            try
+            {
+                _universityPrintInfo.PrintGeneralData();
+            }
+            catch ( Exception exception )
+            {
+                Console.WriteLine( $"\nUnable to print general information {exception.Message}" );
+            }
+        }
+
+        public void PrintLecturerCourseWithNamesInfo()
+        {
+            try
+            {
+                _universityPrintInfo.PrintLecturerCourseWithNames();
+            }
+            catch ( Exception exception )
+            {
+                Console.WriteLine( $"\nUnable to print lecturer name - course name information {exception.Message}" );
+            }
+        }
 
         public void PrintCourseNumberOfStudentsInfo()
         {
@@ -173,15 +196,18 @@ namespace UniversityLib
             }
         }
 
-        public void PrintGeneralDataInfo()
+        public string GetFacultyNameByIdInfo()
         {
             try
             {
-                _universityPrintInfo.PrintGeneralData();
+                return _universityPrintInfo.GetItemNameById( "FacultyId",
+                                                             "FacultyName",
+                                                              @"SELECT [Faculty].[FacultyId], [Faculty].[FacultyName] FROM [Faculty]" );
             }
             catch ( Exception exception )
             {
-                Console.WriteLine( $"\nUnable to print general information {exception.Message}" );
+                return "";
+                Console.WriteLine( $"\nUnable to get faculty name information by id {exception.Message}" );
             }
         }
 
@@ -189,7 +215,9 @@ namespace UniversityLib
         {
             try
             {
-                return _universityPrintInfo.GetDepartmentNameById();
+                return _universityPrintInfo.GetItemNameById( "DepartmentId",
+                                                             "DepartmentName",
+                                                             @"SELECT [Department].[DepartmentId], [Department].[DepartmentName] FROM [Department]" );
             }
             catch ( Exception exception )
             {
@@ -202,7 +230,9 @@ namespace UniversityLib
         {
             try
             {
-                return _universityPrintInfo.GetStudentGroupNameById();
+                return _universityPrintInfo.GetItemNameById( "StudentGroupId",
+                                                             "StudentGroupName",
+                                                             @"SELECT [StudentGroup].[StudentGroupId], [StudentGroup].[StudentGroupName] FROM [StudentGroup]" );
             }
             catch ( Exception exception )
             {
@@ -211,6 +241,36 @@ namespace UniversityLib
             }
         }
 
+        public string GetCourseNameByIdInfo()
+        {
+            try
+            {
+                return _universityPrintInfo.GetItemNameById( "CourseId",
+                                                             "CourseName",
+                                                             @"SELECT [Course].[CourseId], [Course].[CourseName] FROM [Course]" );
+            }
+            catch ( Exception exception )
+            {
+                return "";
+                Console.WriteLine( $"\nUnable to get course name information by id {exception.Message}" );
+            }
+        }
+
+        public string GetLecturerNameByIdInfo()
+        {
+            try
+            {
+                return _universityPrintInfo.GetPersonNameById( "LecturerId",
+                                                               "LecturerFirstName",
+                                                               "LecturerLastName",
+                                                               @"SELECT [Lecturer].[LecturerId], [Lecturer].[LecturerFirstName], [Lecturer].[LecturerLastName] FROM [Lecturer]" );
+            }
+            catch ( Exception exception )
+            {
+                return "";
+                Console.WriteLine( $"\nUnable to get student group name information by id {exception.Message}" );
+            }
+        }
 
     }
 }
